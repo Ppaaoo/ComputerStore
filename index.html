@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html land="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compitable" content="IE-edge">
+        <meta name="viewport" content="widht=device-width, inital-scale=1.0">
+        <title>Drinks app</title>
+    </head>
+    <body>
+        <h1>Drinks app</h1>
+        <p>Add drinks to cart</p>
+
+        <select name="drinks" id="drinks"></select>
+        <span>Price - </span> <!-- Could have used label tag as well-->
+        <span id="price"></span>
+        <input type="number" name="quantity" id="quantity" min="0" max="10" value="1">
+        <button id="add">Add to cart</button> <!-- Adding button-->
+        <h3> Cart:</h3>
+        <ul id="cart"></ul> <!-- Storing items in the cart-->
+        <p id="total">Total: 0.0</p>
+        <button id="pay">Pay</button>
+        <script src="app.js"></script>
+    </body>
+</html>
