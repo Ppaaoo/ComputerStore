@@ -7,12 +7,32 @@
         <title>Computer Store app</title>
     </head>
     <body>
-        <h1>Bank</h1>
+        <!--Bank-->
         <div>
-            <h3>Balance </h3>
-            <label id="balanceLabel">25</label>
+            <h1>Bank</h1>
+            <div>
+                <h3>Balance </h3>
+                <label id="balanceLabel">25</label>
+            </div>
+            <button id="getLoan">Get loan</button>
         </div>
-        <button id="getLoan">Get loan</button>
+        <hr>
+        <!--Work-->
+        <div>
+            <h1>Work</h1>
+        </div>
+        <hr>
+        <!--Laptops-->
+        <div>
+            <h1>Laptops</h1>
+            <select name="laptops" id="laptops"></select>
+            <span>Price -</span>
+            <span id="price"></span>
+            <button id="payButton">Pay</button>
+            <h3>Features:</h3>
+            <ul style="list-style: none" id="features"></ul>
+            <span id="stock">In stock: 1</span>
+        </div>
         <script type="text/javascript" src="app.js"></script>
     </body>
 </html>
