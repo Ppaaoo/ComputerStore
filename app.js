@@ -1,15 +1,17 @@
 //BankElements
 const loanButton = document.getElementById("getLoan");
-const workButton = document.getElementById("work");
-const repayLoanButton = document.getElementById("repayLoan");
+//const repayLoanButton = document.getElementById("repayLoan");
+const balanceLabel = document.getElementById("balanceLabel");
+
+//WorkElements
+const workButton = document.getElementById("workButton");
+const payEl = document.getElementById("pay");
+
 //LaptopElements
 const laptopEl = document.getElementById("laptops");
 const laptopPrice = document.getElementById("price");
 const featuresEL = document.getElementById("features");
 const stockEl = document.getElementById("stock");
-//repayLoanButton.style.visibility = 'hidden';
-
-const balanceLabel = document.getElementById("balanceLabel");
 
 //Bank
 let balance = 25
@@ -35,10 +37,33 @@ loanButton.addEventListener('click', () => {
     }
 })
 
+//Work
+let workPay = 0;
+payEl.innerText = 0;
+
+const getWorkMoney = () => {
+    let workTotal = workPay += 100;
+    payEl.innerText = workTotal;
+}
+workButton.addEventListener('click', getWorkMoney);
+
 //Laptops
 let laptopsArr = [];
 let featuresArr = [];
-let lastSpecLength = 0;
+
+//Adding default features to screen. Probably not the best way of doing this, look into this later
+featuresArr[0] = `Has a screen`;
+featuresArr[1] = `Keyboard works, mostly`;
+featuresArr[2] = `32MB Ram (Not upgradeable)`;
+featuresArr[3] = `6GB Hard Disk`;
+featuresArr[4] = `Comes with Floppy Disk Reader (Free) - Requires cable`;
+featuresArr[5] = `Good excersice to carry`;
+
+for(i = 0; i< featuresArr.length; i++) {
+    const featureItem = document.createElement("li");
+    featureItem.innerText = featuresArr[i];
+    featuresEL.appendChild(featureItem);
+}
 
 //fetching data from json file
 fetch("https://hickory-quilled-actress.glitch.me/computers")
@@ -67,7 +92,6 @@ const handleMenuChange = e => {
         featureItem.innerText = `${selectedLaptop.specs[i]}`;
         featuresEL.appendChild(featureItem);
     }
-    lastSpecLength = selectedLaptop.specs.length;
     stockEl.innerText = `In stock: ${parseInt(selectedLaptop.stock)}`;
 }
 
