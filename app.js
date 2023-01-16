@@ -1,10 +1,11 @@
 //BankElements
-const loanButton = document.getElementById("getLoan");
-//const repayLoanButton = document.getElementById("repayLoan");
+const loanButton = document.getElementById("getLoanButton");
+const repayLoanButton = document.getElementById("repayLoanButton");
 const balanceLabel = document.getElementById("balanceLabel");
 
 //WorkElements
 const workButton = document.getElementById("workButton");
+const bankButton = document.getElementById("bankButton");
 const payEl = document.getElementById("pay");
 
 //LaptopElements
@@ -12,11 +13,13 @@ const laptopEl = document.getElementById("laptops");
 const laptopPrice = document.getElementById("price");
 const featuresEL = document.getElementById("features");
 const stockEl = document.getElementById("stock");
+const imageEl = document.getElementById("laptopImage");
 
 //Bank
 let balance = 25
+//Default balance to screen
 let formatted = formatBalance(balance);
-document.getElementById("balanceLabel").innerText = formatted;
+balanceLabel.innerText = formatted;
 
 function formatBalance(amount) {
     return new Intl.NumberFormat('en-US', {style: 'currency', currency: 'SEK'}).format(amount);
@@ -33,23 +36,36 @@ loanButton.addEventListener('click', () => {
     else {
         balance = balance + parseInt(loan);
         let formattedBalance = formatBalance(balance);
-        document.getElementById("balanceLabel").innerText = formattedBalance;
+        balanceLabel.innerText = formattedBalance;
     }
 })
 
 //Work
 let workPay = 0;
-payEl.innerText = 0;
+let workTotal = 0;
+//Default pay to screen
+let formattedPay = formatBalance(0);
+payEl.innerText = formattedPay;
 
 const getWorkMoney = () => {
-    let workTotal = workPay += 100;
-    payEl.innerText = workTotal;
+    workTotal = workPay += 100;
+    let formattedWorkTotal = formatBalance(workTotal);
+    payEl.innerText = formattedWorkTotal;
 }
+
+const bankMoney = () => {
+    balance += workTotal;
+    let formattedBalance = formatBalance(balance);
+    balanceLabel.innerText = formattedBalance;
+}
+
 workButton.addEventListener('click', getWorkMoney);
+bankButton.addEventListener('click', bankMoney);
 
 //Laptops
 let laptopsArr = [];
 let featuresArr = [];
+let imageURL = "https://hickory-quilled-actress.glitch.me/assets/images/";
 
 //Adding default features to screen. Probably not the best way of doing this, look into this later
 featuresArr[0] = `Has a screen`;
@@ -65,7 +81,7 @@ for(i = 0; i< featuresArr.length; i++) {
     featuresEL.appendChild(featureItem);
 }
 
-//fetching data from json file
+//Fetching data from json file
 fetch("https://hickory-quilled-actress.glitch.me/computers")
     .then(response => response.json())
     .then(data => laptopsArr = data)
@@ -73,7 +89,7 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
 
 const addLaptopsToList = laptopsArr => {
     laptopsArr.forEach(x => addLaptopToList(x));
-    laptopPrice.innerText = laptopsArr[0].price;
+    laptopPrice.innerText = formatBalance(laptopsArr[0].price);
 }
 
 const addLaptopToList = laptop => {
@@ -86,13 +102,14 @@ const addLaptopToList = laptop => {
 const handleMenuChange = e => {
     removeChildElements();
     const selectedLaptop = laptopsArr[e.target.selectedIndex];
-    laptopPrice.innerText = selectedLaptop.price;
+    laptopPrice.innerText = formatBalance(selectedLaptop.price);
     for(i = 0; i< selectedLaptop.specs.length; i++) {
         const featureItem = document.createElement("li");
         featureItem.innerText = `${selectedLaptop.specs[i]}`;
         featuresEL.appendChild(featureItem);
     }
     stockEl.innerText = `In stock: ${parseInt(selectedLaptop.stock)}`;
+    imageEl.src = `${imageURL}${e.target.selectedIndex + 1}.png`;
 }
 
 //Function to clear list of features
