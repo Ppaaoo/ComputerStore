@@ -12,10 +12,15 @@
             <h1>Bank</h1>
             <div>
                 <h3>Balance: </h3>
-                <label id="balanceLabel">25</label>
+                <label id="balanceLabel"></label>
             </div>
-            <button id="getLoanButton">Get loan</button>
-            <button id="repayLoanButton">Repay loan</button>
+            <div>
+                <span>Loan amount: </span>
+                <span id="loanAmount"></span>
+                <div>
+                    <button id="getLoanButton">Take a loan</button>
+                </div>
+            </div>
         </div>
 
         <hr>
@@ -28,6 +33,9 @@
             </div>
             <button id="workButton">Work</button>
             <button id="bankButton">Bank</button>
+        </div>
+        <div>
+            <button id="repayLoanButton">Repay loan</button>
         </div>
 
         <hr>
@@ -46,7 +54,8 @@
                 <ul style="list-style: none" id="features"></ul>
             </div>
             <div>
-                <span id="stock">In stock: 1</span>
+                <span>In stock:</span>
+                <span id="stock"></span>
             </div>
         </div>
         <script type="text/javascript" src="app.js"></script>
