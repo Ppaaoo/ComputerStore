@@ -9,11 +9,11 @@
     </head>
     <body>
         <!--Bank-->
-        <div>
+        <div id="bankDiv">
             <h1>Bank</h1>
             <div>
-                <h3>Balance: </h3>
-                <label id="balanceLabel"></label>
+                <span>Balance: </span>
+                <span id="balanceLabel"></span>
             </div>
             <div>
                 <span>Loan amount: </span>
@@ -24,9 +24,8 @@
             </div>
         </div>
 
-        <hr>
         <!--Work-->
-        <div>
+        <div id="workDiv">
             <div>
                 <h1>Work</h1>
                 <span>Pay - </span>
@@ -34,29 +33,30 @@
             </div>
             <button id="workButton">Work</button>
             <button id="bankButton">Bank</button>
-        </div>
-        <div>
-            <button id="repayLoanButton">Repay loan</button>
+            <div>
+                <button id="repayLoanButton">Repay loan</button>
+            </div>
         </div>
 
-        <hr>
         <!--Laptops-->
-        <div>
+        <div id="laptopDiv">
             <h1>Laptops</h1>
             <div>
                 <select name="laptops" id="laptops"></select>
                 <span>Price -</span>
                 <span id="price"></span>
             </div>
-            <button id="payButton">Pay</button>
-            <div>
-                <img id="laptopImage" width=300 src="https://hickory-quilled-actress.glitch.me/assets/images/1.png" alt="Image of laptop">
+            <img id="laptopImage" width=300 src="https://hickory-quilled-actress.glitch.me/assets/images/1.png" alt="Image of laptop">
+            <div id="featuresDiv">
                 <h3>Features:</h3>
                 <ul style="list-style: none" id="features"></ul>
             </div>
             <div>
                 <span>In stock:</span>
                 <span id="stock"></span>
+            </div>
+            <div>
+                <button id="payButton">Pay</button>
             </div>
         </div>
         <script type="text/javascript" src="app.js"></script>
